@@ -27,18 +27,19 @@ dependencies {
 
     // Libraries
     compileOnly(libs.configurate.yaml) // Paperに組み込んである
+    compileOnly(libs.gson) // Paperに組み込んである
     runtimeDownload(libs.adventure.serializer.configurate)
     implementation(libs.kotonoha.message)
     implementation(libs.kotonoha.message.extra.miniplaceholders)
     implementation(libs.kotonoha.translator)
 }
 
-val mainPackage = "io.github.crafterslife.dev.papertemplate" // TODO: パッケージ名を変更 (実際のパッケージ名も変更を忘れないように！)
+val mainPackage = "io.github.crafterslife.dev.umapocket"
 paperPluginYaml {
-    name = "PaperTemplate" // TODO: プラグイン名を変更
-    author = "Namiu (うにたろう)" // TODO: 自分の名前に変更
+    name = "UmaPocket"
+    author = "すだち"
     website = "https://github.com/CraftersLife-Dev"
-    apiVersion = "1.21.10"
+    apiVersion = "1.21.8"
 
     main = "$mainPackage.core.JavaPluginImpl"
     bootstrapper = "$mainPackage.core.PluginBootstrapImpl"
@@ -90,7 +91,7 @@ tasks {
         // runディレクトリの中にlog4j2.xmlを突っ込むとログの設定を変更可能
         // Paper: https://github.com/PaperMC/Paper/blob/main/paper-server/src/main/resources/log4j2.xml
         systemProperty("log4j.configurationFile", "log4j2.xml")
-        minecraftVersion("1.21.10")
+        minecraftVersion("1.21.8")
         downloadPlugins {
             modrinth("luckperms", "v5.5.0-bukkit")
             modrinth("miniplaceholders", "4zOT6txC")

@@ -9,6 +9,7 @@ indra-licenser-spotless = "3.2.0"
 
 # Java
 paper-api = "1.21.10-R0.1-SNAPSHOT"
+gson = "2.11.0"
 mini-placeholders = "3.0.1"
 configurate = "4.2.0"
 adventure-serializer-configurate = "4.24.0"
@@ -16,6 +17,7 @@ kotonoha = "0.1.0-SNAPSHOT"
 
 [libraries]
 paper-api = { group = "io.papermc.paper", name = "paper-api", version.ref = "paper-api" }
+gson = { group = "com.google.code.gson", name = "gson", version.ref = "gson" }
 mini-placeholders = { group = "io.github.miniplaceholders", name = "miniplaceholders-api", version.ref = "mini-placeholders" }
 configurate-yaml = { group = "org.spongepowered", name = "configurate-yaml", version.ref = "configurate" }
 adventure-serializer-configurate = { group = "net.kyori", name = "adventure-serializer-configurate4", version.ref = "adventure-serializer-configurate" }
