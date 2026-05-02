@@ -1,7 +1,7 @@
 /*
- * PaperTemplate
+ * UmaPocket
  *
- * Copyright (c) 2025. Namiu (うにたろう)
+ * Copyright (c) 2025. すだち
  *                     Contributors []
  *
  * This program is free software: you can redistribute it and/or modify
@@ -27,7 +27,7 @@ import org.jspecify.annotations.NullMarked;
 @NullMarked
 public final class Permissions {
 
-    public static final String COMMAND_RELOAD = "template.command.reload"; // TODO: templateを変更
+    public static final String COMMAND_RELOAD = "umapocket.command.admin";
 
     private Permissions() {
     }

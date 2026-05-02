@@ -1,7 +1,7 @@
 /*
- * PaperTemplate
+ * UmaPocket
  *
- * Copyright (c) 2025. Namiu (うにたろう)
+ * Copyright (c) 2025. すだち
  *                     Contributors []
  *
  * This program is free software: you can redistribute it and/or modify
@@ -34,7 +34,7 @@ import org.jspecify.annotations.NullMarked;
  */
 @NullMarked
 @ApiStatus.NonExtendable
-@TranslationStoreName(namespace = "template", value = "messages") // TODO: templateを変更
+@TranslationStoreName(namespace = "umapocket", value = "messages")
 public interface Messages {
 
     /**
@@ -43,7 +43,7 @@ public interface Messages {
      * @return 再読み込み成功メッセージ
      */
     @WithPlaceholders(PlaceholderScope.GLOBAL)
-    @Key("template.config.reload.success") // TODO: templateを変更
+    @Key("umapocket.config.reload.success")
     @Message(locale = Locales.EN_US, content = "<info>Configuration reloaded successfully!")
     @Message(locale = Locales.JA_JP, content = "<info>設定の再読み込みに成功しました！")
     Component configReloadSuccess();

@@ -1,7 +1,7 @@
 /*
- * PaperTemplate
+ * UmaPocket
  *
- * Copyright (c) 2025. Namiu (うにたろう)
+ * Copyright (c) 2025. すだち
  *                     Contributors []
  *
  * This program is free software: you can redistribute it and/or modify
@@ -61,7 +61,7 @@ public final class AdminCommand implements BaseCommand {
      */
     @Override
     public LiteralCommandNode<CommandSourceStack> node() {
-        return Commands.literal("template")
+        return Commands.literal("umapocket")
                 .then(this.reloadNode())
                 .build();
     }
