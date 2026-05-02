@@ -1,7 +1,7 @@
 /*
- * PaperTemplate
+ * UmaPocket
  *
- * Copyright (c) 2025. Namiu (うにたろう)
+ * Copyright (c) 2025. すだち
  *                     Contributors []
  *
  * This program is free software: you can redistribute it and/or modify
@@ -68,6 +68,6 @@ public final class PluginBootstrapImpl implements PluginBootstrap {
 
     @Override
     public JavaPlugin createPlugin(final PluginProviderContext context) {
-        return new JavaPluginImpl(this.configHolder, this.messages);
+        return new JavaPluginImpl();
     }
 }

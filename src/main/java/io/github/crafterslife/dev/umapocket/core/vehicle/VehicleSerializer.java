@@ -1,7 +1,7 @@
 /*
- * PaperTemplate
+ * UmaPocket
  *
- * Copyright (c) 2025. Namiu (うにたろう)
+ * Copyright (c) 2025. すだち
  *                     Contributors []
  *
  * This program is free software: you can redistribute it and/or modify
@@ -24,9 +24,8 @@ import org.bukkit.Location;
 import org.bukkit.UnsafeValues;
 import org.bukkit.World;
 import org.bukkit.entity.Entity;
-import org.jspecify.annotations.NullMarked;
-
 import java.util.Base64;
+import org.jspecify.annotations.NullMarked;
 
 /**
  * エンティティのシリアライズ・デシリアライズを担当するクラス。

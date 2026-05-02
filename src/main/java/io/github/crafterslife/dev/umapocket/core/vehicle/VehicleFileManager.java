@@ -1,7 +1,7 @@
 /*
- * PaperTemplate
+ * UmaPocket
  *
- * Copyright (c) 2025. Namiu (うにたろう)
+ * Copyright (c) 2025. すだち
  *                     Contributors []
  *
  * This program is free software: you can redistribute it and/or modify
@@ -21,9 +21,6 @@ package io.github.crafterslife.dev.umapocket.core.vehicle;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import org.jspecify.annotations.NullMarked;
-import org.jspecify.annotations.Nullable;
-
 import java.io.IOException;
 import java.io.Reader;
 import java.io.Writer;
@@ -32,6 +29,8 @@ import java.nio.file.Path;
 import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import org.jspecify.annotations.NullMarked;
+import org.jspecify.annotations.Nullable;
 
 /**
  * 乗り物データのファイル読み書きを担当するクラス。
@@ -54,7 +53,7 @@ public final class VehicleFileManager {
     public VehicleFileManager(final Path dataFolder, final Logger logger) {
         this.vehiclesFolder = dataFolder.resolve("vehicles");
         this.logger = logger;
-        ensureDirectoryExists();
+        this.ensureDirectoryExists();
     }
 
     /**
@@ -85,7 +84,7 @@ public final class VehicleFileManager {
      * @return 保存されたデータがある場合はtrue
      */
     public boolean exists(final UUID playerUuid) {
-        return Files.exists(getPlayerDataFile(playerUuid));
+        return Files.exists(this.getPlayerDataFile(playerUuid));
     }
 
     /**
@@ -95,12 +94,12 @@ public final class VehicleFileManager {
      * @return 読み込んだデータ、存在しない場合はnull
      */
     public @Nullable VehicleData load(final UUID playerUuid) {
-        final Path dataFile = getPlayerDataFile(playerUuid);
+        final Path dataFile = this.getPlayerDataFile(playerUuid);
         if (!Files.exists(dataFile)) {
             return null;
         }
 
-        try (final Reader reader = Files.newBufferedReader(dataFile)) {
+        try (Reader reader = Files.newBufferedReader(dataFile)) {
             return GSON.fromJson(reader, VehicleData.class);
         } catch (final IOException e) {
             this.logger.log(Level.SEVERE, "プレイヤー " + playerUuid + " の乗り物データの読み込みに失敗しました。", e);
@@ -115,8 +114,8 @@ public final class VehicleFileManager {
      * @param vehicleData 保存する乗り物データ
      */
     public void save(final UUID playerUuid, final VehicleData vehicleData) {
-        final Path dataFile = getPlayerDataFile(playerUuid);
-        try (final Writer writer = Files.newBufferedWriter(dataFile)) {
+        final Path dataFile = this.getPlayerDataFile(playerUuid);
+        try (Writer writer = Files.newBufferedWriter(dataFile)) {
             GSON.toJson(vehicleData, writer);
         } catch (final IOException e) {
             this.logger.log(Level.SEVERE, "プレイヤー " + playerUuid + " の乗り物データの保存に失敗しました。", e);
@@ -129,7 +128,7 @@ public final class VehicleFileManager {
      * @param playerUuid プレイヤーのUUID
      */
     public void delete(final UUID playerUuid) {
-        final Path dataFile = getPlayerDataFile(playerUuid);
+        final Path dataFile = this.getPlayerDataFile(playerUuid);
         try {
             Files.deleteIfExists(dataFile);
         } catch (final IOException e) {

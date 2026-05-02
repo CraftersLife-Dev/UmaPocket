@@ -1,7 +1,7 @@
 /*
- * PaperTemplate
+ * UmaPocket
  *
- * Copyright (c) 2025. Namiu (うにたろう)
+ * Copyright (c) 2025. すだち
  *                     Contributors []
  *
  * This program is free software: you can redistribute it and/or modify
@@ -41,5 +41,5 @@ public record VehicleData(
         double z,
         float yaw,
         float pitch
-) {}
+) { }
 
