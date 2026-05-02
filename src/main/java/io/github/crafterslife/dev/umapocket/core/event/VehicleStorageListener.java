@@ -1,7 +1,7 @@
 /*
- * PaperTemplate
+ * UmaPocket
  *
- * Copyright (c) 2025. Namiu (うにたろう)
+ * Copyright (c) 2025. すだち
  *                     Contributors []
  *
  * This program is free software: you can redistribute it and/or modify
@@ -19,6 +19,7 @@
  */
 package io.github.crafterslife.dev.umapocket.core.event;
 
+import io.github.crafterslife.dev.umapocket.core.utility.PluginScheduler;
 import io.github.crafterslife.dev.umapocket.core.vehicle.VehicleStorage;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -26,7 +27,6 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
-import org.bukkit.plugin.Plugin;
 import org.jspecify.annotations.NullMarked;
 
 /**
@@ -36,17 +36,17 @@ import org.jspecify.annotations.NullMarked;
 public final class VehicleStorageListener implements Listener {
 
     private final VehicleStorage vehicleStorage;
-    private final Plugin plugin;
+    private final PluginScheduler scheduler;
 
     /**
      * VehicleStorageListenerのコンストラクタ。
      *
      * @param vehicleStorage 乗り物ストレージ
-     * @param plugin         プラグインインスタンス
+     * @param scheduler      スケジューラー
      */
-    public VehicleStorageListener(final VehicleStorage vehicleStorage, final Plugin plugin) {
+    public VehicleStorageListener(final VehicleStorage vehicleStorage, final PluginScheduler scheduler) {
         this.vehicleStorage = vehicleStorage;
-        this.plugin = plugin;
+        this.scheduler = scheduler;
     }
 
     /**
@@ -76,8 +76,7 @@ public final class VehicleStorageListener implements Listener {
         // 保存された乗り物があれば復元
         if (this.vehicleStorage.hasStoredVehicle(player)) {
             // 少し遅延させて復元（プレイヤーのスポーンが完了してから）
-            player.getServer().getScheduler().runTaskLater(
-                    this.plugin,
+            this.scheduler.runTaskLater(
                     () -> this.vehicleStorage.restoreVehicle(player),
                     20L // 1秒後
             );

@@ -1,7 +1,7 @@
 /*
- * PaperTemplate
+ * UmaPocket
  *
- * Copyright (c) 2025. Namiu (うにたろう)
+ * Copyright (c) 2025. すだち
  *                     Contributors []
  *
  * This program is free software: you can redistribute it and/or modify
@@ -20,10 +20,8 @@
 package io.github.crafterslife.dev.umapocket.core;
 
 import io.github.crafterslife.dev.umapocket.core.event.VehicleStorageListener;
-import io.github.crafterslife.dev.umapocket.core.resource.Config;
-import io.github.crafterslife.dev.umapocket.core.resource.Messages;
+import io.github.crafterslife.dev.umapocket.core.utility.PluginScheduler;
 import io.github.crafterslife.dev.umapocket.core.vehicle.VehicleStorage;
-import io.github.crafterslife.dev.umapocket.infrastructure.configuration.ConfigurationHolder;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jspecify.annotations.NullMarked;
@@ -35,25 +33,18 @@ import org.jspecify.annotations.Nullable;
 @NullMarked
 public final class JavaPluginImpl extends JavaPlugin {
 
-    private final ConfigurationHolder<Config> configHolder;
-    private final Messages messages;
     private @Nullable VehicleStorage vehicleStorage;
-
-    JavaPluginImpl(
-            final ConfigurationHolder<Config> configHolder,
-            final Messages messages
-    ) {
-        this.configHolder = configHolder;
-        this.messages = messages;
-    }
 
     @Override
     public void onEnable() {
         // VehicleStorageの初期化
         this.vehicleStorage = new VehicleStorage(getDataFolder().toPath(), getLogger());
 
+        // スケジューラーの初期化
+        final PluginScheduler scheduler = new PluginScheduler(this);
+
         // リスナーの登録
-        Bukkit.getPluginManager().registerEvents(new VehicleStorageListener(this.vehicleStorage, this), this);
+        Bukkit.getPluginManager().registerEvents(new VehicleStorageListener(this.vehicleStorage, scheduler), this);
     }
 
     /**
