@@ -1,7 +1,7 @@
 /*
- * PaperTemplate
+ * UmaPocket
  *
- * Copyright (c) 2025. Namiu (うにたろう)
+ * Copyright (c) 2025. すだち
  *                     Contributors []
  *
  * This program is free software: you can redistribute it and/or modify
@@ -20,7 +20,6 @@
 package io.github.crafterslife.dev.umapocket.infrastructure.configuration.serializers;
 
 import java.lang.reflect.Type;
-import java.util.Objects;
 import net.kyori.adventure.key.Key;
 import org.bukkit.Material;
 import org.bukkit.Registry;
@@ -62,7 +61,11 @@ public final class MaterialSerializer implements TypeSerializer<Material> {
             throw new SerializationException(Material.class, "Failed to deserialize from %s".formatted(node.toString()));
         }
 
-        return Objects.requireNonNull(Material.matchMaterial(nodeKey));
+        final Material material = Material.matchMaterial(nodeKey);
+        if (material == null) {
+            throw new SerializationException(Material.class, "Unknown material: " + nodeKey);
+        }
+        return material;
     }
 
     /**
